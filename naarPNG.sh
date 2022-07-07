@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
 
-#navigeer naar gegeven directory
-cd $1
-
 #convert jpg naar een 128x128 png
-convert -scale 128x128 *.jpg converted.png
+for FILE in $1/*.jpg; do
+
+    convert "$FILE" -resize 128x128  "$1/$(basename $FILE .jpg)-converted.png"
+
+done
 
